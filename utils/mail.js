@@ -14,10 +14,10 @@ const transporter = nodemailer.createTransport({
 const sendEmail = async (to, subject, message) => {
   const htmlContent = `
     <div style="font-family: Arial, sans-serif; max-width: 600px; margin: auto; padding: 20px; border: 1px solid #ccc; border-radius: 10px;">
-      <div style="text-align: left; padding: 10px 0; border-bottom: 1px solid #ccc;">
+      <div style="text-align: left; border-bottom: 1px solid #ccc;">
         <h1 style="font-size: 24px; color: #333;">${subject}</h1>
       </div>
-      <div style="padding: 20px; color: #333; line-height: 1.5;">
+      <div style="color: #333; line-height: 1.5;">
         <p>${message}</p>
       </div>
     </div>
